@@ -5,10 +5,14 @@ f = open('input.txt','r')
 data = f.readlines()
 
 def count_zeroes(pointer,atoi,dir): 
+    
     if dir == 'R': 
         return (pointer+atoi)//100 
     else: 
-        if(atoi>pointer): 
+        if pointer == 0: 
+            pointer = 100
+
+        if(atoi>=pointer): 
             return 1 + (atoi-pointer) // 100
         else: 
             return 0 
@@ -21,7 +25,7 @@ for i in data:
        
     else: 
         count += count_zeroes(pointer,atoi,'L')
-        pointer = atoi - pointer % 100 
+        pointer = (pointer - atoi) % 100 
     
 
 
